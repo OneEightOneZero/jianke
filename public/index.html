@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+  <script>
+    !(function (win) {
+      var doc = win.document;
+      var el = doc.documentElement;
+      var designSize = 640;
+      var ratio = designSize / 100;
+      var resizeEvent = 'orientationchange' in win ? 'orientationchange' : 'resize';
+      function handleResize() {
+        var clientWidth = el.clientWidth || 320;
+        clientWidth > designSize && (clientWidth = designSize), el.style.fontSize = clientWidth / ratio + 'px';
+        setTimeout(function () { el.className = 'complete-body'; }, 500);
+      }
+      if (doc.addEventListener) {
+        win.addEventListener(resizeEvent, handleResize, false);
+        doc.addEventListener('DOMContentLoaded', handleResize, false);
+      }
+    })(window)
+  </script>
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>jianke</title>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+
+</html>
