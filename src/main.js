@@ -13,6 +13,7 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 
 import '../style/icon.css'
 import '../style/aliplayer.css'
+// import '../style/news.css'
 
 import $ from 'jquery'
 
