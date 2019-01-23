@@ -4,10 +4,16 @@ import 'weui'
 
 import axios from 'axios'
 
+// import './styles/footer.css'
+
 import store from './configs/store.js'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
 
 import '../style/icon.css'
 import '../style/aliplayer.css'
+
 import $ from 'jquery'
 
 Vue.prototype.$ = $;

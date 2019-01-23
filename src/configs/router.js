@@ -1,7 +1,7 @@
 import App from '../App.vue'
-import Home from '../pages/Home.vue'
+import Xindex from '../pages/Xindex.vue'
 import Classify from '../pages/Classify.vue'
-import Tt from '../pages/Tt.vue'
+import News from '../pages/News.vue'
 import Mine from '../pages/Mine.vue'
 import Car from '../pages/Car.vue'
 
@@ -17,14 +17,14 @@ const routes = [
         name: 'app',
         component: App,
         children: [
-            { path: 'home', name: 'home', component: Home },
+            { path: 'xindex', name: 'xindex', component: Xindex },
             { path: 'classify', name: 'classify', component: Classify },
-            { path: 'tt', name: 'tt', component: Tt },
+            { path: 'news', name: 'news', component: News },
             { path: 'car', name: 'car', component: Car },
             { path: 'mine', name: 'mine', component: Mine}
           ]
     },
-    { path: '/', redirect: { name: 'home' }}
+    { path: '/', redirect: { name: 'xindex' }}
 ]
 
 const router = new VueRouter({
