@@ -1,13 +1,16 @@
 <template>
-  <div>
-      <!-- <Xheader/> -->
-  </div>
+	<div>
+		<Xheader></Xheader>
+		<Xuser></Xuser>
+	</div>
 </template>
 <script>
-// import Xheader from '../components/'
-export default {
-  components: {
-    // Xheader
-  }
-}
+	import Xuser from '../components/Xuser.vue'
+	import Xheader from '../components/Xheader.vue'
+	export default {
+		components: {
+			Xheader,
+			Xuser
+		}
+	}
 </script>
