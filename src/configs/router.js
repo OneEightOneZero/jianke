@@ -1,4 +1,7 @@
 import App from '../App.vue'
+import Login from '../pages/Login.vue'
+import Register from '../pages/Register.vue'
+
 import Xindex from '../pages/Xindex.vue'
 import Classify from '../pages/Classify.vue'
 import News from '../pages/News.vue'
@@ -26,6 +29,8 @@ const routes = [
             { path: 'mine', name: 'mine', component: Mine}
           ]
     },
+    {path:'/login',name: 'login',component: Login},
+    {path:'/register',name: 'register',component: Register},
     { path: '/', redirect: { name: 'xindex' }}
 ]
 

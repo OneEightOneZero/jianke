@@ -61,6 +61,7 @@
   </header>
 </template>
 <script>
+import bus from "../configs/bus.js";
 export default {
   data() {
     return {
@@ -70,27 +71,35 @@ export default {
     };
   },
   methods: {
-    back(){
-      this.$router.go(-1)
+    back() {
+      this.$router.go(-1);
     },
     togglenav() {
       this.navshow = !this.navshow;
+      bus.$emit('menu',this.navshow)
     },
     setTitle() {
-      switch (this.$route.path.split("/").slice(-1)[0]) {
-        case "classify":
+      switch (this.$route.path.slice(1)) {
+        case "app/classify":
           this.title = "全部分类";
           break;
-        case "car":
+        case "app/car":
           this.title = "购物车";
           this.menushow = false;
           break;
-        default:null;
+        case "login":
+          this.title = "用户登录";
+          break;
+          case "register":
+          this.title = "用户注册";
+          break;
+        default:
+          null;
       }
     }
   },
-  created(){
-    this.setTitle()
+  created() {
+    this.setTitle();
   }
 };
 </script>

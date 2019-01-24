@@ -3,7 +3,8 @@ import Vue from 'vue'
 import 'weui'
 
 import axios from 'axios'
-
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+import qs from "qs";
 // import './styles/footer.css'
 
 import store from './configs/store.js'
@@ -21,6 +22,7 @@ import $ from 'jquery'
 
 Vue.prototype.$ = $;
 Vue.prototype.$axios = axios;
+Vue.prototype.$qs = qs;
 
 Vue.config.productionTip = false
 
@@ -30,5 +32,5 @@ new Vue({
   el: "#app",
   router,
   store,
-  render: h => h('router-view'),
+  render: h => h('router-view')
 })
