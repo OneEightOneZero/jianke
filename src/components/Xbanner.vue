@@ -1,7 +1,7 @@
 <template>
 	<div class="bd-example">
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
+    <ol class="carousel-indicators" style="top:150px;">
       <li data-target="#carouselExampleCaptions" data-slide-to="0" class=""></li>
       <li data-target="#carouselExampleCaptions" data-slide-to="1" class=""></li>
 			<li data-target="#carouselExampleCaptions" data-slide-to="2" class=""></li>

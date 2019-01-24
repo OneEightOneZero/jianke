@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<!-- <Xsearch></Xsearch> -->
+		<XindexSearch></XindexSearch>
 		<Xbanner></Xbanner>
 		<Xlist></Xlist>
 		<Xnav></Xnav>
@@ -9,14 +9,14 @@
 </template>
 
 <script>
-	// import Xsearch from '../components/Xsearch.vue'
+	import XindexSearch from '../components/XindexSearch.vue'
 	import Xbanner from '../components/Xbanner.vue'
 	import Xlist from '../components/Xlist.vue'
 	import Xnav from '../components/Xnav.vue'
 	import Xrecommend from '../components/Xrecommend.vue'
 	export default {
 		components: {
-			// Xsearch,
+			XindexSearch,
 			Xbanner,
 			Xlist,
 			Xnav,

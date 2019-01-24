@@ -1,42 +1,3 @@
-<template>
-	<div>
-		<div class="nav-tab" data-v-56b50de9="" data-v-39623280="">
-			<div class="scroll-wrap" data-v-56b50de9="">
-				<div class="scroll-inner" data-v-56b50de9="" >
-					<span @click="changeTab(index)" v-for="(n,index) in tab"   :class="{'nav-link':true,active:index===activeIndex}" data-v-56b50de9="" :key="index" >{{n}}</span> 
-				</div>
-			</div>
-		</div>
-	</div>
-	
-</template>
-
-<script>
-	export default {
-		data() {
-			return {
-				tab:["推荐","关注","养肝护肝","关爱脑友","心脑血管"],
-				activeIndex:0
-				
-			}
-		},
-		 methods:{
-                changeTab(index){
-					console.log(index)
-                    // 事件处理函数中的this指向Vue的实例
-                   this.activeIndex = index
-                }
-            },
-		created() {	
-		}
-	}
-	
-</script>
-
-<style scoped>
-	.nav-tab .scroll-wrap .scroll-inner span{
-		height: 50px;
-	}
 @import url(//g.alicdn.com/de/prismplayer/2.7.1/skins/default/aliplayer-min.css);@font-face {
     font-family: iconfont;
     src: url(/dist/iconfont.eot?081754d050ac4cd09a798427a67444b4);
@@ -685,11 +646,9 @@ a,div,img {
         transform: rotate(1turn)
     }
 }
-.nav-tab{
-	height: 50px;
-}
+
 .nav-tab[data-v-a0bfe588] {
-    height: 50px;
+    height: 37px;
     font-size: 0;
     text-align: center;
     display: -webkit-box;
@@ -716,7 +675,7 @@ a,div,img {
 .item-main[data-v-a0bfe588] {
     width: 100%;
     padding: 56% 0 0;
-    background: #eee;
+    background: #eee
 }
 
 .item[data-v-a0bfe588] {
@@ -837,8 +796,8 @@ a,div,img {
     overflow: hidden;
     box-sizing: border-box;
     position: relative;
-    height: 50px;
-    font-size: 0;
+    height: .74rem;
+    font-size: 0
 }
 
 .nav-tab .scroll-wrap[data-v-56b50de9]:after,.nav-tab .scroll-wrap[data-v-56b50de9]:before {
@@ -872,7 +831,6 @@ a,div,img {
 
 .nav-tab .scroll-wrap .scroll-inner[data-v-56b50de9] {
     width: 100%;
-	height: 50px;
     white-space: nowrap;
     overflow-x: auto
 }
@@ -3972,5 +3930,3 @@ li[data-v-11f43db4] {
     -webkit-transform: translateY(0);
     transform: translateY(0)
 }
-
-</style>
