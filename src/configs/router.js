@@ -23,8 +23,7 @@ const routes = [
             { path: 'classify', name: 'classify', component: Classify },
             { path: 'news', name: 'news', component: News },
             { path: 'car', name: 'car', component: Car },
-            { path: 'mine', name: 'mine', component: Mine},
-			{ path: 'xuser', name: 'xuser', component: Xuser}
+            { path: 'mine', name: 'mine', component: Mine}
           ]
     },
     { path: '/', redirect: { name: 'xindex' }}
