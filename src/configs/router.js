@@ -4,6 +4,8 @@ import Classify from '../pages/Classify.vue'
 import News from '../pages/News.vue'
 import Mine from '../pages/Mine.vue'
 import Car from '../pages/Car.vue'
+import Xuser from '../components/Xuser.vue'
+
 
 import Vue from 'vue'
 
@@ -21,7 +23,8 @@ const routes = [
             { path: 'classify', name: 'classify', component: Classify },
             { path: 'news', name: 'news', component: News },
             { path: 'car', name: 'car', component: Car },
-            { path: 'mine', name: 'mine', component: Mine}
+            { path: 'mine', name: 'mine', component: Mine},
+			{ path: 'xuser', name: 'xuser', component: Xuser}
           ]
     },
     { path: '/', redirect: { name: 'xindex' }}

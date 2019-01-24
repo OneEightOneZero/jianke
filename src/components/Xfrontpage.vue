@@ -2,33 +2,34 @@
 	<div>
 		<div class="nav-tab" data-v-56b50de9="" data-v-39623280="">
 			<div class="scroll-wrap" data-v-56b50de9="">
-				<div class="scroll-inner" data-v-56b50de9="" >
-					<span @click="changeTab(index)" v-for="(n,index) in tab"   :class="{'nav-link':true,active:index===activeIndex}" data-v-56b50de9="" :key="index" >{{n}}</span> 
+				<div class="scroll-inner" data-v-56b50de9="">
+					<span @click="changeTab(index,n)" v-for="(n,index) in tab" :class="{'nav-link':true,active:index===activeIndex}" data-v-56b50de9="" :key="index" >{{n}}</span> 
 				</div>
 			</div>
 		</div>
 	</div>
 	
 </template>
-
 <script>
 	export default {
 		data() {
 			return {
-				tab:["推荐","关注","养肝护肝","关爱脑友","心脑血管"],
-				activeIndex:0
-				
+				tab:["推荐","关注","养肝护肝","关爱糖友","心脑血管"],
+				activeIndex:0,
+				druglist:[]
 			}
 		},
-		 methods:{
-                changeTab(index){
-					console.log(index)
+		methods:{
+             changeTab(index,n){
                     // 事件处理函数中的this指向Vue的实例
-                   this.activeIndex = index
-                }
-            },
-		created() {	
-		}
+					// console.log(index,n)
+					this.activeIndex = index
+					this.$store.dispatch("setNewList",n);
+                },
+         },
+// 		created() {	
+// 			this.changeTab()
+// 		}
 	}
 	
 </script>

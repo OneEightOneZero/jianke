@@ -1,11 +1,11 @@
 <template>
 	<section class="recommend-list" data-v-234d5624="" data-v-431e0e45="">
-		<article class="rl-item" data-v-234d5624="" v-for="(n,index) in druglist" :key="index">
+		<article @click="detaillist(n,index)" class="rl-item" data-v-234d5624="" v-for="(n,index) in druglist" :key="index">
 			<img :src="n.url" alt="" class="rl-pic"
 			data-v-234d5624="">
-			<div class="rl-text" data-v-234d5624="">
+			<div class="rl-text" data-v-234d5624="" >
 				<span class="name" data-v-234d5624="" v-text="n.name"> </span>
-				<span class="info" data-v-234d5624="" v-text="n.info">全进口乙肝新药！吉利德研发，加拿大生产</span>
+				<span class="info" data-v-234d5624="" v-text="n.info"></span>
 				<span class="price" data-v-234d5624=""><em data-v-234d5624="">￥</em><span v-text="n.price"></span>
 				</span></div>
 		</article>
@@ -25,11 +25,16 @@
 			async drug(){
 				let data = await this.$axios.post("http://localhost:4000/users/findDrugname");
 				this.druglist = this.druglist.concat(data.data)
+			},	
+			detaillist(n,index){
+				console.log(n,index)
+				// this.$store.dispatch("detailList",n);
 			}
 		},
 		created(){
 			// console.log(this)
 			this.drug();
+			
 		}
 	}
 </script>
