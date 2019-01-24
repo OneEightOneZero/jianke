@@ -40,6 +40,7 @@ export default {
     }
   },
   created() {
+      this.$store.dispatch("setcurrentClass", "男科用药");    
     this.getlist();
   },
   computed: {
