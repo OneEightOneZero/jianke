@@ -54,3 +54,10 @@ export default {
   }
 };
 </script>
+<style scoped>
+  .classify-box {
+    min-height: 8.7rem;
+    background-color: #fff;
+  }
+  
+</style>

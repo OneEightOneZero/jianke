@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     getlist(item,idx) {
-      // console.log(item);
       this.current = idx;
       this.$store.dispatch("setcurrentClass", item);
     }

@@ -1,13 +1,18 @@
 <template>
   <header data-v-d45bd762 data-v-6403cba8 id="mallHeader" class="class-head">
     <div data-v-d45bd762>
-      <a data-v-d45bd762 rel="nofollow" class="back-btn common-header-btn">
-        <i data-v-d45bd762 class="icon iconfont icon-back"></i>
+      <a data-v-d45bd762 rel="nofollow" class="back-btn common-header-btn" @click="back">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-guanbi"></use>
+        </svg>
       </a>
-      <span data-v-d45bd762>全部分类</span>
-      <div data-v-d45bd762 class="toggle-btn common-header-btn">
+      <span data-v-d45bd762 v-text="title"></span>
+      <div data-v-d45bd762 class="toggle-btn common-header-btn" v-show="menushow">
         <a data-v-d45bd762 rel="nofollow" class="common-width" @click="togglenav">
-          <i data-v-d45bd762 class="icon iconfont icon-more"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-iconfontzhizuobiaozhun0257" v-show="!navshow"></use>
+            <use xlink:href="#icon-guanbi1" v-show="navshow"></use>
+          </svg>
         </a>
       </div>
     </div>
@@ -15,31 +20,39 @@
       <ul data-v-d45bd762>
         <li data-v-d45bd762 class="arrows-tag"></li>
         <li data-v-d45bd762>
-          <a data-v-d45bd762 href="/" rel="nofollow">
-            <i data-v-d45bd762 class="icon iconfont icon-home"></i>
+          <a data-v-d45bd762 href="/#/app/xindex" rel="nofollow">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-shouye"></use>
+            </svg>
             <em data-v-d45bd762>首页</em>
           </a>
         </li>
         <li data-v-d45bd762>
           <a
             data-v-d45bd762
-            href="/classify/classifyList"
+            href="/#/app/classify"
             class="router-link-exact-active router-link-active"
             rel="nofollow"
           >
-            <i data-v-d45bd762 class="icon iconfont icon-types-search"></i>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-fenlei"></use>
+            </svg>
             <em data-v-d45bd762>分类搜索</em>
           </a>
         </li>
         <li data-v-d45bd762>
-          <a data-v-d45bd762 href="/cart" class rel="nofollow">
-            <i data-v-d45bd762 class="icon iconfont icon-cart"></i>
+          <a data-v-d45bd762 href="/#/app/car" class rel="nofollow">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-gouwuchekong"></use>
+            </svg>
             <em data-v-d45bd762>购物车</em>
           </a>
         </li>
         <li data-v-d45bd762>
-          <a data-v-d45bd762 href="/user" class rel="nofollow">
-            <i data-v-d45bd762 class="icon iconfont icon-person-center"></i>
+          <a data-v-d45bd762 href="/#/app/mine" class rel="nofollow">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-wo"></use>
+            </svg>
             <em data-v-d45bd762>个人中心</em>
           </a>
         </li>
@@ -52,51 +65,34 @@ export default {
   data() {
     return {
       title: "全部分类",
-      navshow: false
+      navshow: false,
+      menushow: true
     };
   },
   methods: {
-    togglenav(){
-      this.navshow = !this.navshow
+    back(){
+      this.$router.go(-1)
+    },
+    togglenav() {
+      this.navshow = !this.navshow;
+    },
+    setTitle() {
+      switch (this.$route.path.split("/").slice(-1)[0]) {
+        case "classify":
+          this.title = "全部分类";
+          break;
+        case "car":
+          this.title = "购物车";
+          this.menushow = false;
+          break;
+        default:null;
+      }
     }
+  },
+  created(){
+    this.setTitle()
   }
 };
 </script>
 <style scoped>
-/* * {
-  margin: 0;
-  padding: 0;
-}
-header {
-  height: 45px;
-}
-.class-head>div {
-  position: relative;
-  text-align: center;
-  line-height: 45px;
-  
-}
-.class-head>div span {
-  font-size: 18px;
-}
-.back-btn {
-  display: block;
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  left:20px;
-  top:50%;
-  transform:translateY(-50%);
-  background-color: pink;
-}
-.toggle-btn a {
-  display:block;
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  right:20px;
-  top:50%;
-  transform:translateY(-50%);
-  background-color: pink;
-} */
 </style>

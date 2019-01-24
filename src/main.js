@@ -11,8 +11,11 @@ import store from './configs/store.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 
-import '../style/icon.css'
-import '../style/aliplayer.css'
+import './styles/icon.css'
+import './styles/aliplayer.css'
+
+import './iconfont/iconfont.css'
+import './iconfont/iconfont.js'
 
 import $ from 'jquery'
 
