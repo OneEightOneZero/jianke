@@ -96,6 +96,9 @@ export default {
           case "search":
           this.title = "搜索";
           break;
+					case "detailList/":
+					this.title = "健客产品详情";
+					break;
         default:
           null;
       }
