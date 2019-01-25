@@ -22,7 +22,7 @@
 			Xnav,
 			Xrecommend
 				
-		}
+		},
 	}
 </script>
 

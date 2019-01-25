@@ -1,7 +1,7 @@
 import App from '../App.vue'
 import Login from '../pages/Login.vue'
 import Register from '../pages/Register.vue'
-
+import Search from '../pages/Search.vue'
 import Xindex from '../pages/Xindex.vue'
 import Classify from '../pages/Classify.vue'
 import News from '../pages/News.vue'
@@ -26,13 +26,14 @@ const routes = [
             { path: 'classify', name: 'classify', component: Classify },
             { path: 'news', name: 'news', component: News },
             { path: 'car', name: 'car', component: Car },
-            { path: 'mine', name: 'mine', component: Mine},
-			{ path: 'xuser', name: 'xuser', component: Xuser}
-          ]
+            { path: 'mine', name: 'mine', component: Mine },
+            { path: 'xuser', name: 'xuser', component: Xuser }
+        ]
     },
-    {path:'/login',name: 'login',component: Login},
-    {path:'/register',name: 'register',component: Register},
-    { path: '/', redirect: { name: 'xindex' }}
+    { path: '/login', name: 'login', component: Login },
+    { path: '/register', name: 'register', component: Register },
+    { path: '/search', name: 'search', component: Search },
+    { path: '/', redirect: { name: 'xindex' } }
 ]
 
 const router = new VueRouter({

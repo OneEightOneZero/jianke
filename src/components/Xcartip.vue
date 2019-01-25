@@ -1,15 +1,45 @@
 <template>
-  <div data-v-5cb28b68 class="cart-login-tip">
+  <div data-v-5cb28b68 class="cart-login-tip" v-show="islogin">
     <span data-v-5cb28b68>登录后将保存购物车商品</span>
-    <span data-v-5cb28b68 class="login-btn">登录</span>
+    <span data-v-5cb28b68 class="login-btn" @click="toMine">登录</span>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      islogin: true
+    };
+  },
+  methods: {
+    toMine() {
+      location.href = "/#/login";
+    },
+    autologin() {
+      this.$axios({
+        method: "post",
+        data: this.$qs.stringify({ token: localStorage.getItem("token") }),
+        url: "http://localhost:3000/users/autologin"
+      }).then(res => {
+        if (res.data.status) {
+          //   sessionStorage.setItem('user',res.data.tel.payload.data.tel);
+          //   location.href="/#/app/mine";
+          this.islogin = false;
+        } else {
+          this.islogin = true;
+          //   console.log("token fail");
+        }
+      });
+    }
+  },
+  created(){
+    this.autologin();
+  }
+};
 </script>
 <style scoped>
 .cart-login-tip {
-  margin-top: .88rem;
+  margin-top: 0.88rem;
   background: #fff;
   margin-bottom: 0.3rem;
   text-align: center;

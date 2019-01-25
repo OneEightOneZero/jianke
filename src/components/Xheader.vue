@@ -76,7 +76,7 @@ export default {
     },
     togglenav() {
       this.navshow = !this.navshow;
-      bus.$emit('menu',this.navshow)
+      bus.$emit("menu", this.navshow);
     },
     setTitle() {
       switch (this.$route.path.slice(1)) {
@@ -90,8 +90,11 @@ export default {
         case "login":
           this.title = "用户登录";
           break;
-          case "register":
+        case "register":
           this.title = "用户注册";
+          break;
+          case "search":
+          this.title = "搜索";
           break;
         default:
           null;

@@ -34,7 +34,14 @@
             </p>
           </div>
           <div data-v-6764fe5f class="code-item">
-            <input data-v-6764fe5f type="text" id="input" placeholder="验证码" maxlength="6" class="inputStyle">
+            <input
+              data-v-6764fe5f
+              type="text"
+              id="input"
+              placeholder="验证码"
+              maxlength="6"
+              class="inputStyle"
+            >
             <button data-v-6764fe5f class="code-btn" id="code">获取验证码</button>
             <button data-v-6764fe5f class="code-btn computing" style="display: none;">重新发送(0秒)</button>
           </div>
@@ -111,6 +118,23 @@ export default {
     random() {
       return parseInt(Math.random() * 10);
     },
+    autologin() {
+      this.$axios({
+        method: "post",
+        data: this.$qs.stringify(
+          { token: localStorage.getItem("token") }
+        ),
+        url: "http://localhost:3000/users/autologin"
+      }).then(res => {
+        // console.log(res.data);
+        if(res.data.status){
+          sessionStorage.setItem('user',res.data.tel.payload.data.tel);
+          location.href="/#/app/mine";
+        }else{
+          console.log("token fail");
+        }
+      });
+    },
     login() {
       let $ = this.$;
       let random = this.random;
@@ -122,9 +146,9 @@ export default {
       let $code = $("#code");
       let $input = $("#input");
       $code.on("click", () => {
-        if ($tel2.val() == "") {
+        if ($tel2.val().trim() == "") {
           alert("请输入手机号");
-        } else if (!/^1[34578]\d{9}$/.test($tel2.val())) {
+        } else if (!/^1[34578]\d{9}$/.test($tel2.val().trim())) {
           alert("手机号码有误，请重填");
           return false;
         } else {
@@ -132,11 +156,11 @@ export default {
         }
         $input.val("");
       });
-      $btn2.on("click",()=>{
-        if (!/^1[34578]\d{9}$/.test($tel2.val())) {
+      $btn2.on("click", () => {
+        if (!/^1[34578]\d{9}$/.test($tel2.val().trim())) {
           alert("手机号码有误，请重填");
           return false;
-        } else if ($input.val() !== $code.html()) {
+        } else if ($input.val().trim() !== $code.html()) {
           alert("验证码错误");
           $code.html("" + random() + random() + random() + random());
           $input.val("");
@@ -146,18 +170,20 @@ export default {
             method: "post",
             url: "http://localhost:3000/users/shortcut",
             data: this.$qs.stringify({
-              tel: $tel2.val(),
+              tel: $tel2.val().trim()
             })
           }).then(res => {
-            if (res.data === "success") {
+            if (res.data.status === "success") {
               alert("登录成功");
+              localStorage.setItem("token", res.data.token);
+              sessionStorage.setItem('user',res.data.tel);
               location.href = "/#/app/mine";
             } else {
               alert("登录失败");
             }
           });
         }
-      })
+      });
       $tel2.on("input", () => {
         oninput2();
       });
@@ -175,12 +201,14 @@ export default {
           method: "post",
           url: "http://localhost:3000/users/login",
           data: this.$qs.stringify({
-            tel: $tel1.val(),
-            psw: $psw.val()
+            tel: $tel1.val().trim(),
+            psw: $psw.val().trim()
           })
         }).then(res => {
           if (res.data.status === "success") {
             alert("登录成功");
+            localStorage.setItem("token", res.data.token);
+            sessionStorage.setItem('user',res.data.tel);
             location.href = "/#/app/mine";
           } else {
             alert("账号或密码错误");
@@ -188,14 +216,14 @@ export default {
         });
       });
       function oninput() {
-        if ($tel1.val() == "" || $psw.val() == "") {
+        if ($tel1.val().trim() == "" || $psw.val().trim() == "") {
           $btn.attr("disabled", true).css({ backgroundColor: "#95d1ff" });
         } else {
           $btn.attr("disabled", false).css({ backgroundColor: "#20a0ff" });
         }
       }
       function oninput2() {
-        if ($tel2.val() == "" || $input.val() == "") {
+        if ($tel2.val().trim() == "" || $input.val().trim() == "") {
           $btn2.attr("disabled", true).css({ backgroundColor: "#95d1ff" });
         } else {
           $btn2.attr("disabled", false).css({ backgroundColor: "#20a0ff" });
@@ -207,14 +235,8 @@ export default {
     this.menu2();
     this.login();
   },
-  watch: {
-    // tab(val){
-    //   if(val===false){
-    //     setTimeout(()=>{
-    //     alert("此功能未开放,请使用账号密码登录")
-    //     },300)
-    //   }
-    // }
+  created() {
+    this.autologin();
   }
 };
 </script>

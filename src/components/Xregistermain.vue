@@ -95,16 +95,16 @@ export default {
       let $btn = $("#btn");
       let $input = $code.prev();
       $code.on("click", () => {
-        if ($inputTel.val() == "") {
+        if ($inputTel.val().trim() == "") {
           alert("请输入手机号");
-        } else if (!/^1[34578]\d{9}$/.test($inputTel.val())) {
+        } else if (!/^1[34578]\d{9}$/.test($inputTel.val().trim())) {
           alert("手机号码有误，请重填");
           return false;
         } else {
           this.$axios
             .get("http://localhost:3000/users", {
               params: {
-                tel: $inputTel.val()
+                tel: $inputTel.val().trim()
               },
               header: {}
             })
@@ -131,15 +131,15 @@ export default {
         oninput();
       });
       $btn.on("click", () => {
-        if (!/^1[34578]\d{9}$/.test($inputTel.val())) {
+        if (!/^1[34578]\d{9}$/.test($inputTel.val().trim())) {
           alert("手机号码有误，请重填");
           return false;
-        } else if ($input.val() !== $code.html()) {
+        } else if ($input.val().trim() !== $code.html()) {
           alert("验证码错误");
           $code.html("" + random() + random() + random() + random());
           $input.val("");
           return false;
-        } else if (!/^[a-z0-9]{6,16}$/.test($inputPsw.val())) {
+        } else if (!/^[a-z0-9]{6,16}$/.test($inputPsw.val().trim())) {
           alert("请填写正确密码");
           $inputPsw.val("");
         } else {
@@ -147,8 +147,8 @@ export default {
             method: "post",
             url: "http://localhost:3000/users",
             data: this.$qs.stringify({
-              tel: $inputTel.val(),
-              psw: $inputPsw.val()
+              tel: $inputTel.val().trim(),
+              psw: $inputPsw.val().trim()
             })
           }).then(res => {
             if (res.data === "success") {
@@ -162,9 +162,9 @@ export default {
       });
       function oninput() {
         if (
-          $inputTel.val() == "" ||
-          $input.val() == "" ||
-          $inputPsw.val() == ""
+          $inputTel.val().trim() == "" ||
+          $input.val().trim() == "" ||
+          $inputPsw.val().trim() == ""
         ) {
           $btn.attr("disabled", true).css({ backgroundColor: "#95d1ff" });
         } else {
