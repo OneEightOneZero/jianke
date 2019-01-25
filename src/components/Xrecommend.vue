@@ -1,6 +1,12 @@
 <template>
 	<section class="recommend-list" data-v-234d5624="" data-v-431e0e45="">
-		<article @click="detaillist(n,index)" class="rl-item" data-v-234d5624="" v-for="(n,index) in druglist" :key="index">
+		<article 
+		@click="detaillist(n,index)" 
+		class="rl-item" 
+		data-v-234d5624="" 
+		v-for="(n,index) in druglist" 
+		:key="index"
+		>
 			<img :src="n.url" alt="" class="rl-pic"
 			data-v-234d5624="">
 			<div class="rl-text" data-v-234d5624="" >
@@ -27,14 +33,18 @@
 				this.druglist = this.druglist.concat(data.data)
 			},	
 			detaillist(n,index){
-				console.log(n,index)
-				// this.$store.dispatch("detailList",n);
-			}
+				// console.log(n,index)
+				this.$store.commit('editcurrentdetail',n)
+				this.$router.push({
+					name:'detailList',
+					params:{id:index,name:`${n.name}`}
+				})
+				this.$store.dispatch("setdetailList",n);
+			},
+			
 		},
 		created(){
-			// console.log(this)
 			this.drug();
-			
 		}
 	}
 </script>

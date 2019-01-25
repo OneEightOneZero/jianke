@@ -7,7 +7,8 @@ const store = new Vuex.Store({
     state: {
         currentClassnav: '男科用药',
         currentPage: '首页',
-		currentNews:'推荐'
+		currentNews:'推荐',
+		currentDetail:''
     },
     mutations: {
         editcurrentClass(state, data) {
@@ -18,7 +19,10 @@ const store = new Vuex.Store({
         },
 		editcurrentNews(state,data){
 			state.currentNews = data
-		}
+		},
+		editcurrentdetail(state,data){
+			state.currentDetail = data
+		},
     },
     getters: {
         getcurrentClass(state) {
@@ -29,6 +33,9 @@ const store = new Vuex.Store({
         },
 		getcurrentNews(state) {
 			return state.currentNews
+		},
+		getcurrentDetail(state) {
+			return state.currentDetail
 		}
     },
     actions: {
@@ -41,9 +48,9 @@ const store = new Vuex.Store({
 		setNewList(context, data){
 			context.commit("editcurrentNews", data);
 		},
-// 		setdetailList(context, data){
-// 			context.commit("editcurrentNews", data);
-// 		},
+		setdetailList(context, data){
+			context.commit("editcurrentdetail", data);
+		},
 		
     }
 })

@@ -93,6 +93,9 @@ export default {
           case "register":
           this.title = "用户注册";
           break;
+					case "detailList/":
+					this.title = "健客产品详情";
+					break;
         default:
           null;
       }

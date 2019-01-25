@@ -47,11 +47,7 @@
 				<a data-v-33bfad50="" class="">健康币：0</a>
 				<a data-v-33bfad50="" class="growth-value">成长值：0</a>
 			</p>
-			<div data-v-789e0544="" data-v-33bfad50="" class="wave wave">
-				<div data-v-789e0544=""><canvas id="canvas1" width="414" height="32"></canvas></div>
-				<div data-v-789e0544=""><canvas id="canvas2" width="414" height="32"></canvas></div>
-				<div data-v-789e0544=""><canvas id="canvas3" width="414" height="32"></canvas></div>
-			</div>
+			
 		</section>
 		<section data-v-38bce36f="" data-v-23ed9342="" class="user-order">
 			<div data-v-38bce36f="" class="my-order">

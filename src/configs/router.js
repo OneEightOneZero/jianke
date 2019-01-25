@@ -7,8 +7,8 @@ import Classify from '../pages/Classify.vue'
 import News from '../pages/News.vue'
 import Mine from '../pages/Mine.vue'
 import Car from '../pages/Car.vue'
-import Xuser from '../components/Xuser.vue'
-
+// import Xuser from '../components/Xuser.vue'
+import DetailList from '../pages/DetailList.vue'
 
 import Vue from 'vue'
 
@@ -26,17 +26,18 @@ const routes = [
             { path: 'classify', name: 'classify', component: Classify },
             { path: 'news', name: 'news', component: News },
             { path: 'car', name: 'car', component: Car },
-            { path: 'mine', name: 'mine', component: Mine}
+            { path: 'mine', name: 'mine', component: Mine},
+			// { path: 'detailList',name: 'detailList', component: DetailList}
           ]
     },
     {path:'/login',name: 'login',component: Login},
     {path:'/register',name: 'register',component: Register},
-    { path: '/', redirect: { name: 'xindex' }}
+	{path:'/register',name: 'register',component: Register},
+    {path:'/detailList/:id',name: 'detailList',component: DetailList},
 ]
 
 const router = new VueRouter({
     mode: "hash",
     routes
 })
-
 export default router;
